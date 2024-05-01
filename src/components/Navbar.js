@@ -104,12 +104,13 @@ const CloseButton = styled.button`
   }
 `;
 const UserData = styled.div`
-  padding: 5px 30px;
+  padding: 5px 0px;
   border: 1px solid #4d4d4d;
   font-size: 14px;
   margin-bottom: 5px; 
   background: lightblue;
-
+  width: 200px;
+  text-align:center;
 `;
 const DivWrap = styled.div`
   position: absolute; 
@@ -133,6 +134,13 @@ const Sidebar = () => {
   const handleRedirection = () => {
     history('/')
   }
+  const truncateString = (str, maxLength) => {
+    if (str.length > maxLength) {
+      return str.substring(0, maxLength) + '...';
+    } else {
+      return str;
+    }
+  }
   return (
     <>
       <MenuButton onClick={toggleSidebar}>☰</MenuButton>
@@ -147,7 +155,7 @@ const Sidebar = () => {
           <UserStatus>
             {currentUser ? (
               <DivWrap>
-                <UserData>Welcome, {currentUser.email}</UserData>
+                <UserData>Welcome, {truncateString(currentUser.email, 20)}</UserData>
                 <LogoutButton onClick={handleLogout}>Logout </LogoutButton>
               </DivWrap>
             ) : (
