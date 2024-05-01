@@ -16,7 +16,7 @@ To run this application locally, follow the steps below:
 
    git clone https://github.com/Sohailahmad7692/Movie_Watchlist.git
 
-2. Navigate into the project directory color-a-word and install dependency using command:
+2. Navigate into the project directory watchlists and install dependency using command:
    npm install
 3. Start frontend project using command:
    npm start
