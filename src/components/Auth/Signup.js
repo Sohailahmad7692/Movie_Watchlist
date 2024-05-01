@@ -56,6 +56,7 @@ const Signup = () => {
     const handleSignup = () => {
         createAccount(email);
         setEmail('');
+        localStorage.setItem('authenticatedUser', email);
         history('/');
     };
 
