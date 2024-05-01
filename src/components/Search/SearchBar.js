@@ -96,7 +96,7 @@ const SearchBar = () => {
   const handleSearch = async () => {
     setIsLoading(true)
     try {
-      const response = await axios.get(`http://www.omdbapi.com/?apikey=4bf6cb6b&s=${searchTerm}`);
+      const response = await axios.get(`https://www.omdbapi.com/?apikey=4bf6cb6b&s=${searchTerm}`);
       setSuggestions(response.data.Search || []);
       setIsLoading(false)
     } catch (error) {
