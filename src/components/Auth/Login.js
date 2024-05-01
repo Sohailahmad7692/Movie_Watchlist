@@ -1,0 +1,74 @@
+import React, { useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
+
+const LoginContainer = styled.div`
+    padding: 20px;
+    position: absolute;
+    left: 280px;
+    top: 20px;
+    @media (max-width: 800px){
+    margin: auto;
+    left: 20px;
+    top: 50px;
+    }
+`;
+const LoginInput = styled.input`
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+
+    @media (max-width: 768px) {
+    border-radius: 4px;
+    margin-bottom: 10px;
+    }
+`;
+const LoginButton = styled.button`
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+
+    &:hover {
+    background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+    border-radius: 4px;
+    }
+`;
+
+const Login = () => {
+    const { login } = useAuth();
+    const [email, setEmail] = useState('');
+    const history = useNavigate();
+
+    const handleLogin = () => {
+        login(email);
+        setEmail('');
+        localStorage.setItem('authenticatedUser', email);
+        history('/');
+    };
+
+    return (
+        <LoginContainer>
+            <h2>Login</h2>
+            <LoginInput
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <LoginButton onClick={handleLogin}>Login</LoginButton>
+        </LoginContainer>
+    );
+};
+
+export default Login;
