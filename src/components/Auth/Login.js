@@ -9,7 +9,7 @@ const LoginContainer = styled.div`
     position: absolute;
     left: 280px;
     top: 20px;
-    @media (max-width: 800px){
+    @media (max-width: 768px){
     margin: auto;
     left: 20px;
     top: 50px;
